@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Company {
-    List<Observer> observerList = new ArrayList<Observer>();
-    
+
+    List<Observer> observerList = new ArrayList<>();
+
     // Name of the subject
-    private String name;
+    private final String name;
 
     public Company(String name) {
         this.name = name;
@@ -17,27 +18,27 @@ public abstract class Company {
     public String getName() {
         return name;
     }
-    
+
     // For the stock price
     private int stockPrice;
-    
-    public int getStockPrice(){
+
+    public int getStockPrice() {
         return this.stockPrice;
     }
-    
-    public void setStockPrice(int stockPrice){
+
+    public void setStockPrice(int stockPrice) {
         this.stockPrice = stockPrice;
         // Stock price is changed.
         // So notify observer(s).
         notifyRegisteredUsers();
     }
-    
+
     // To register an observer
     public abstract void register(Observer o);
-    
+
     // To unregister an oabserver
     public abstract void unregister(Observer o);
-    
+
     // To notify a registered user
     public abstract void notifyRegisteredUsers();
 }
